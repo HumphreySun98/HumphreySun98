@@ -2,7 +2,6 @@
 
 *Embedded & Applied ML Engineer · Full-Stack Agent Developer · Signal Processing + Deep Learning*
 
-*M.S. Computer Science @ UT Arlington · Graduating December 2026*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-haofei.sun@uta.edu-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:haofei.sun@uta.edu)
