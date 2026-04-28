@@ -3,7 +3,7 @@
 *Embedded & Applied ML Engineer · Full-Stack Agent Developer · Signal Processing + Deep Learning*
 
 
-
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Live_Demo-FFD21E?style=flat&logo=huggingface&logoColor=black)](https://huggingface.co/spaces/HumphreySun98/smart-study-agent)
 
