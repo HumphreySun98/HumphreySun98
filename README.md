@@ -5,20 +5,22 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
+[![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Live_Demo-FFD21E?style=flat&logo=huggingface&logoColor=black)](https://huggingface.co/spaces/HumphreySun98/smart-study-agent)
 
 ---
 
 ### About Me
 
-Engineer who connects hardware signals to intelligent software. I've shipped embedded RTOS firmware that samples RF at **77 kHz** (3× prior published rates), deep-learning models that **recover signals lost to aliasing** at 98.6% accuracy, and full-stack LLM agents used by real users.
+Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. I've shipped embedded RTOS firmware sampling RF at **77 kHz** (3× prior published rates), deep-learning models that **recover signals lost to aliasing** at 98.6% accuracy, full-stack LLM agents live on the Chrome Web Store, and an open-source benchmarking toolkit for AI coding agents.
 
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals at **98.6% accuracy**
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
-- Deployed a **Claude-powered agent** (live on HuggingFace) with a closed-loop OODA cycle over 7 document formats
-- Shipped a **Python ETL pipeline** at VisualComm that replaced manual reconciliation across diverse vendor schemas
+- Deployed a **Claude-powered learning agent** live on **Chrome Web Store** + HuggingFace, with a 4-policy benchmark and an honestly-reported finding that a rule-based heuristic outperformed Q-learning on short-horizon tasks
+- Shipped **RepoAgentBench**, an open-source toolkit that mines merged PRs into reproducible coding-agent benchmarks; tested 4 frontier LLMs across claude-code and aider with real API spend
+- **Summer 2026** intern at Halo Microelectronics on AI-assisted analog IC design and verification flows
 
-Interests: edge AI, wireless sensing, LLM agents, signal processing, sim-to-real for robotics.
+Interests: edge AI, wireless sensing, LLM agents, agent observability, signal processing, sim-to-real for robotics.
 
 ---
 
@@ -75,10 +77,11 @@ Interests: edge AI, wireless sensing, LLM agents, signal processing, sim-to-real
 
 | Project | Description | Stack |
 | --- | --- | --- |
+| [**SmartStudy Agent**](https://github.com/HumphreySun98/Smart-Study-Agent) *([Web](https://huggingface.co/spaces/HumphreySun98/smart-study-agent) · [Chrome Extension](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik))* | Closed-loop POMDP learning agent with 4-policy benchmark (Random / Rule-based / LinUCB Bandit / Q-learning) over 30 simulated students × 30 sessions. Honestly reported finding: rule-based heuristic +35% over random vs Q-learning +18% — RL is defensible but not dominant in short-horizon regime. Live on Chrome Web Store + HuggingFace; 8-page Streamlit UI; 3 pluggable LLM backends. | Python, Claude API, Streamlit, SQLite, Chrome MV3 |
+| [**RepoAgentBench**](https://github.com/HumphreySun98/repoagentbench) | Open-source CLI that mines merged GitHub PRs into reproducible, contamination-free coding-agent benchmarks. Adapters for claude-code and aider; tested with 4 frontier LLMs (Opus 4.7 / GPT-5.5 / Sonnet 4.6 / Gemini 3.1 Pro) using real API spend. Cites recent benchmark-contamination research (arxiv 2510.08996, 2512.10218). | Python, Click, PyPI, JSONL, GitHub API |
 | [**NeuroUnfold**](https://github.com/HumphreySun98/physical-informed-Deep-Learning-for-wireless-sensing) | Physics-informed DL recovering 406 kHz LoRa chirps from 5.3× aliased BLE RSSI. Branch disambiguation enables BLE-only wireless sensing at 5 m. | Python, PyTorch, NumPy |
 | [**High-Speed BLE RSSI Firmware**](https://github.com/HumphreySun98/High-speed-BLE-RSSI-sampling-rate) | Custom Zephyr RTOS firmware on nRF54L15 hitting **77 kHz** sampling (3× prior published), bypassing BLE protocol layer for raw energy detection. | C, Zephyr RTOS, DMA |
-| [**SmartStudy Agent**](https://github.com/HumphreySun98/Smart-Study-Agent) *([Live Demo](https://huggingface.co/spaces/HumphreySun98/smart-study-agent))* | Claude-powered adaptive tutoring agent with OPEAA decision loop, Q-learning policy, spaced repetition, and concept graph. Streamlit UI. | Python, Claude API, Streamlit, SQLite |
-| [**Agentic Weather Assistant**](https://github.com/HumphreySun98/agentic-weather-assistant) | Full-stack agentic web app: LangChain ReAct agent + custom MCP microservice wrapping a public REST API. Built with Claude Code. | React, FastAPI, LangChain, MCP, Docker |
+| [**Agentic Weather Assistant**](https://github.com/HumphreySun98/agentic-weather-assistant) | Full-stack agentic web app: LangChain ReAct agent + custom MCP microservice wrapping a public REST API. 4 Docker services with typed tool-calling. | React, FastAPI, LangChain, MCP, Docker |
 | [**Dual-Stream Gesture Transformer**](https://github.com/HumphreySun98/dual-stream-gesture-transformer) | Real-time hand gesture recognition via a Dual-Stream Spatiotemporal Transformer on MediaPipe skeletons. **557 FPS** CPU, 88.2% with 35 labeled samples. | Python, PyTorch, MediaPipe |
 | [**Deep Learning for BLE Sensing**](https://github.com/HumphreySun98/Deep-Learning-for-BLE-Sensing) | End-to-end super-resolution pipeline recovering wideband LoRa channel responses from narrowband BLE RSSI via progressive sub-pixel convolution. | Python, PyTorch, C |
 
@@ -93,4 +96,4 @@ Interests: edge AI, wireless sensing, LLM agents, signal processing, sim-to-real
 
 ---
 
-Open to full-time roles · Based in DFW · Available December 2026
+Open to **Dec 2026 / 2027 full-time roles** · F-1 OPT/CPT/STEM-OPT eligible · Based in DFW
