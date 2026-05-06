@@ -90,7 +90,7 @@ Interests: edge AI, wireless sensing, LLM agents, agent observability, signal pr
 ### Research & Publications
 
 - **Robotic Manipulation RL — Sim-to-Real on Franka & xArm** *(paper in preparation)*: Contact-rich policy training in Isaac Lab with sim-to-real transfer to physical hardware.
-- **Peer Reviewer**, *IEEE Wireless Communications Letters*, *Agent Skills '26 Workshop (ACM Conference on AI ang Agentic Systems)* 
+- **Peer Reviewer**, *IEEE Wireless Communications Letters*, *ACM CAIS 2026 (ACM Conference on AI ang Agentic Systems) Workshop AgentSkills* 
 - 2 Chinese patents accepted on mixed-signal circuit techniques
 - First Prize, Ministry of Education Scientific Research Achievement
 
