@@ -96,4 +96,4 @@ Interests: edge AI, wireless sensing, LLM agents, agent observability, signal pr
 
 ---
 
-Open to **Dec 2026 / 2027 full-time roles** · F-1 OPT/CPT/STEM-OPT eligible · Based in DFW
+Open to **Dec 2026 / 2027 full-time roles** · F-1 OPT/CPT/STEM-OPT eligible · Based in New York/DFW
