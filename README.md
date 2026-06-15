@@ -1,34 +1,51 @@
 # Hi, I'm Haofei Sun
 
-*Embedded & Applied ML Engineer · Full-Stack Agent Developer · Signal Processing + Deep Learning*
+*AI Agents & LLM Infrastructure · Deep Learning for Wireless Sensing · Embedded Systems*
 
-**Open to full-time SWE / AI Engineer roles — graduating Dec 2026.**
+**Open to full-time SWE / AI Engineer / ML Engineer roles — graduating Dec 2026.**
 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
 [![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-Live_Demo-FFD21E?style=flat&logo=huggingface&logoColor=black)](https://huggingface.co/spaces/HumphreySun98/smart-study-agent)
 [![Archiagents Live](https://img.shields.io/badge/Archiagents-Live-FF6B35?style=flat)](https://archiagents.com)
 [![LLM API Gateway](https://img.shields.io/badge/LLM_API_Gateway-api.manxuezhida.com-2496ED?style=flat)](https://api.manxuezhida.com)
+[![SGLang PRs Merged](https://img.shields.io/badge/SGLang-2_PRs_Merged-EE4C2C?style=flat)](https://github.com/sgl-project/sglang/pull/26971)
+[![LiteLLM PR Merged](https://img.shields.io/badge/LiteLLM-PR_%2329707_Merged-00B8D9?style=flat)](https://github.com/BerriAI/litellm/pull/29707)
 [![LangChain PR Merged](https://img.shields.io/badge/LangChain-PR_%231085_Merged-1C3C3C?style=flat)](https://github.com/langchain-ai/langchain-aws/pull/1085)
 
 ---
 
 ### About Me
 
-Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. I've shipped embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, full-stack LLM agents live on the Chrome Web Store, an end-to-end AI agent for architectural design in production, and an open-source benchmarking toolkit for AI coding agents.
+Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. Recently I've contributed merged fixes to several leading LLM-infrastructure projects (SGLang, LiteLLM, LangChain), built embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), trained deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, and shipped full-stack LLM agents live on the Chrome Web Store and in production.
 
+- **Contributed to leading LLM-infrastructure projects** — merged PRs into **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain**, spanning multi-tenant batching, multi-region routing, and prompt-encoding bugs (details below)
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals with **0.986 R2** on chirp recovery
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
 - Shipped **Archiagents** (https://archiagents.com/) — an end-to-end AI agent for architectural design that takes project briefs through to IFC4 BIM models and photorealistic renders. Owned engineering implementation and VPS deployment (2-person team)
 - Deployed a **Claude-powered learning agent** live on **Chrome Web Store** + HuggingFace, with a 4-policy benchmark and an honestly-reported finding that a rule-based heuristic outperformed Q-learning on short-horizon tasks
 - Shipped **RepoAgentBench**, an open-source toolkit that mines merged PRs into reproducible coding-agent benchmarks; tested 4 frontier LLMs across claude-code and aider with real API spend
-- Contributed a **merged fix to LangChain** (`langchain-aws`): caught a repo-wide `ensure_ascii` encoding regression silently inflating CJK/emoji prompt tokens ~6x, fixed across 11 sites in 3 modules ([PR #1085](https://github.com/langchain-ai/langchain-aws/pull/1085))
 - Running a **production LLM API gateway** (https://api.manxuezhida.com) with multi-provider routing, load balancing, and key management — serves my downstream products
-- **Summer 2026** intern at Halo Microelectronics on AI-assisted analog IC design and verification flows
+- **Summer 2026** intern at Halo Microelectronics — full-stack AI agent system for analog IC design (RAG + agent orchestration)
 
-Interests: edge AI, wireless sensing, LLM agents, agent observability, signal processing, sim-to-real for robotics.
+Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, signal processing, sim-to-real for robotics.
+
+---
+
+### Open Source — LLM Infrastructure Contributions
+
+**[sgl-project/sglang](https://github.com/sgl-project/sglang) (~29k★)** — high-performance LLM/multimodal inference-serving framework
+- **[PR #26971](https://github.com/sgl-project/sglang/pull/26971) (merged):** Fixed a batched multi-tenant cache-routing crash — `GenerateReqInput.extra_key` wasn't indexed per sub-request, so the whole list was passed to `RadixKey.child_key()`, crashing prefix-cache matching with `TypeError: unhashable type: 'list'`. Added `_normalize_extra_key()` (scalar broadcast / list-length validation / parallel-sample expansion) + a 6-path regression test; passed 121 CI checks.
+- **[PR #25975](https://github.com/sgl-project/sglang/pull/25975) (merged, co-author):** Prefill-delayer monitoring-metric fix — `prefill_delayer_wait_*` histogram stuck at 0 because the release path read `next_state=None`; maintainer adopted the `prev_state` approach and credited me as co-author.
+
+**[BerriAI/litellm](https://github.com/BerriAI/litellm) (50k★)** — LLM gateway/proxy unifying 100+ providers
+- **[PR #29707](https://github.com/BerriAI/litellm/pull/29707) (merged):** Diagnosed a Vertex AI context-caching 404 on multi-region (eu/us) endpoints — the caching path hardcoded the single-region host instead of the multi-region REP host the inference path already used — and contributed the merged parametrized regression suite locking the corrected host-resolution invariant. 49 green CI checks.
+
+**[langchain-ai/langchain-aws](https://github.com/langchain-ai/langchain-aws)** — AWS/Bedrock integrations for LangChain
+- **[PR #1085](https://github.com/langchain-ai/langchain-aws/pull/1085) (merged):** Repo-wide static analysis caught `ensure_ascii=True` defaults in `json.dumps` across Bedrock converters, tool-schema serializers, and stream parsers — silently escaping CJK/emoji to `\uXXXX` and inflating prompt token cost ~6x. Fixed across 11 sites in 3 modules.
+
+**[RepoAgentBench](https://github.com/HumphreySun98/repoagentbench)** — my open-source CLI on PyPI for reproducible, contamination-free coding-agent benchmarks.
 
 ---
 
@@ -53,6 +70,7 @@ Interests: edge AI, wireless sensing, LLM agents, agent observability, signal pr
 ![GPT](https://img.shields.io/badge/GPT_API-412991?style=flat&logo=openai&logoColor=white)
 ![Gemini](https://img.shields.io/badge/Gemini_API-4285F4?style=flat&logo=google&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat)
+![SGLang](https://img.shields.io/badge/SGLang-EE4C2C?style=flat)
 ![MCP](https://img.shields.io/badge/MCP-000000?style=flat)
 ![Vercel AI SDK](https://img.shields.io/badge/Vercel_AI_SDK-000000?style=flat&logo=vercel&logoColor=white)
 ![Transformers](https://img.shields.io/badge/Transformers-FFD21E?style=flat&logo=huggingface&logoColor=black)
@@ -89,13 +107,6 @@ Interests: edge AI, wireless sensing, LLM agents, agent observability, signal pr
 ![Isaac Lab](https://img.shields.io/badge/Isaac_Lab-76B900?style=flat&logo=nvidia&logoColor=white)
 ![Autodesk APS](https://img.shields.io/badge/Autodesk_APS-0696D7?style=flat&logo=autodesk&logoColor=white)
 ![IFC4 BIM](https://img.shields.io/badge/IFC4_BIM-1F5582?style=flat)
-
----
-
-### Open Source
-
-- **[langchain-ai/langchain-aws](https://github.com/langchain-ai/langchain-aws) — [PR #1085](https://github.com/langchain-ai/langchain-aws/pull/1085) (merged):** Surfaced a systemic encoding regression via repo-wide static analysis — `json.dumps` calls in Bedrock chat-model converters, Anthropic tool-schema serializers, and Bedrock-agent stream parsers all relied on Python's `ensure_ascii=True` default, silently escaping CJK / emoji / accented inputs to `\uXXXX` in model prompts (inflating token cost ~6x) and persisted logs. Shipped the fix across 11 sites in 3 modules; merged after collaborator review aligning with the convention used by `langchain-openai` and `langchain-core`.
-- **[RepoAgentBench](https://github.com/HumphreySun98/repoagentbench)** — open-source CLI on PyPI for reproducible, contamination-free coding-agent benchmarks.
 
 ---
 
