@@ -1,10 +1,10 @@
 # Hi, I'm Haofei Sun
- 
+
 *AI Agents & LLM Infrastructure · Deep Learning for Wireless Sensing · Embedded Systems*
- 
+
 **Open to full-time SWE / AI Engineer / ML Engineer roles — graduating Dec 2026.**
- 
- 
+
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
 [![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
@@ -15,13 +15,13 @@
 [![vLLM production-stack Merged](https://img.shields.io/badge/vLLM_production--stack-PR_Merged-30A14E?style=flat)](https://github.com/vllm-project/production-stack/pull/976)
 [![LiteLLM PR Merged](https://img.shields.io/badge/LiteLLM-PR_%2329707_Merged-00B8D9?style=flat)](https://github.com/BerriAI/litellm/pull/29707)
 [![LangChain PR Merged](https://img.shields.io/badge/LangChain-PR_%231085_Merged-1C3C3C?style=flat)](https://github.com/langchain-ai/langchain-aws/pull/1085)
- 
+
 ---
- 
+
 ### About Me
- 
+
 Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. Recently I've contributed merged fixes to leading LLM-infrastructure projects — including a **CUDA kernel correctness fix in vLLM core** — built embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), trained deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, and shipped full-stack LLM agents live on the Chrome Web Store and in production.
- 
+
 - **Contributed to leading LLM-infrastructure ecosystems** — merged PRs into **vLLM** (core engine: a CUDA kernel alignment fix + production-stack), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain**, spanning a KV-cache CUDA kernel bug, multi-tenant batching, multi-region routing, prompt-encoding, and cross-platform deployment (details below)
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals with **0.986 R2** on chirp recovery
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
@@ -31,37 +31,44 @@ Engineer who connects hardware signals to intelligent software, and who ships sy
 - Built **SafetyCommander** at the Zapdos Labs × Antler hackathon (ongoing) — an autonomous factory-safety agent where a VLM (Qwen3-VL on vLLM) judges risk by reading the site's written safety policy and citing the controlling clause; risk lives in one module, YOLO/RAG only ground facts
 - Running a **production LLM API gateway** (https://api.manxuezhida.com) with multi-provider routing, load balancing, and key management — serves my downstream products
 - **Summer 2026** intern at Halo Microelectronics — full-stack AI agent system for analog IC design (RAG + agent orchestration)
+
 Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, signal processing, sim-to-real for robotics.
- 
+
 ---
- 
+
 ### Open Source — LLM Infrastructure Contributions
- 
-#### [vllm-project/vllm](https://github.com/vllm-project/vllm) — the core LLM inference engine
- 
+
+#### [vllm-project/vllm](https://github.com/vllm-project/vllm) (~85k★) — the core LLM inference engine
+
 - **[PR #45466](https://github.com/vllm-project/vllm/pull/45466) (merged):** CUDA kernel correctness fix. Root-caused a `CUDA error: misaligned address` crash (surfacing via FlexAttention with `head_size=46`) that had been misattributed across the issue thread to FlexAttention, CUDA graphs, and GPU drivers. Real cause: the shared `vectorize_with_alignment` helper only checked the *input* pointer's alignment — but in `reshape_and_cache_flash` the destination KV-cache row isn't 16-byte-aligned for head sizes not a multiple of 8, so the kernel's 16-byte vectorized stores faulted. Added an output-pointer alignment check + scalar fallback, eliminating the unguarded-store hazard for every caller (incl. fp8/int8 quant kernels), Linux behavior byte-for-byte unchanged. Added a GPU regression test (`head_size=46`); merged into main by a core committer.
+
 #### [sgl-project/sglang](https://github.com/sgl-project/sglang) (~29k★) — high-performance LLM/multimodal inference-serving framework
- 
+
 - **[PR #26971](https://github.com/sgl-project/sglang/pull/26971) (merged):** Fixed a batched multi-tenant cache-routing crash — `GenerateReqInput.extra_key` wasn't indexed per sub-request, so the whole list was passed to `RadixKey.child_key()`, crashing prefix-cache matching with `TypeError: unhashable type: 'list'`. Added `_normalize_extra_key()` (scalar broadcast / list-length validation / parallel-sample expansion) + a 6-path regression test; passed 121 CI checks.
 - **[PR #25975](https://github.com/sgl-project/sglang/pull/25975) (merged, co-author):** Prefill-delayer monitoring-metric fix — `prefill_delayer_wait_*` histogram stuck at 0 because the release path read `next_state=None`; maintainer adopted the `prev_state` approach and credited me as co-author.
+
 #### [BerriAI/litellm](https://github.com/BerriAI/litellm) (50k★) — LLM gateway/proxy unifying 100+ providers
- 
+
 - **[PR #29707](https://github.com/BerriAI/litellm/pull/29707) (merged):** Diagnosed a Vertex AI context-caching 404 on multi-region (eu/us) endpoints — the caching path hardcoded the single-region host instead of the multi-region REP host the inference path already used — and contributed the merged parametrized regression suite locking the corrected host-resolution invariant. 49 green CI checks.
+
 #### [vllm-project/production-stack](https://github.com/vllm-project/production-stack) — official Kubernetes deployment stack for vLLM
- 
+
 - **[PR #976](https://github.com/vllm-project/production-stack/pull/976) (merged):** Added macOS support to the cluster install tooling via `uname`-based OS/arch detection (linux/darwin × amd64/arm64), so the kubectl install script fetches the matching release instead of assuming Linux. (Companion PR #970 extends the same cross-platform support to the minikube cluster script — approved, pending final merge.)
+
 #### [langchain-ai/langchain-aws](https://github.com/langchain-ai/langchain-aws) — AWS/Bedrock integrations for LangChain
- 
+
 - **[PR #1085](https://github.com/langchain-ai/langchain-aws/pull/1085) (merged):** Repo-wide static analysis caught `ensure_ascii=True` defaults in `json.dumps` across Bedrock converters, tool-schema serializers, and stream parsers — silently escaping CJK/emoji to `\uXXXX` and inflating prompt token cost ~6x. Fixed across 11 sites in 3 modules.
+
 #### [RepoAgentBench](https://github.com/HumphreySun98/repoagentbench)
- 
+
 - My open-source CLI on PyPI for reproducible, contamination-free coding-agent benchmarks.
+
 ---
- 
+
 ### Tech Stack
- 
+
 **Languages**
- 
+
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white)
@@ -71,9 +78,9 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnubash&logoColor=white)
- 
+
 **AI / ML**
- 
+
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
 ![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat&logo=anthropic&logoColor=white)
 ![GPT](https://img.shields.io/badge/GPT_API-412991?style=flat&logo=openai&logoColor=white)
@@ -85,9 +92,9 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 ![Transformers](https://img.shields.io/badge/Transformers-FFD21E?style=flat&logo=huggingface&logoColor=black)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
- 
+
 **Backend & Web**
- 
+
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
@@ -97,9 +104,9 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 ![Tailwind](https://img.shields.io/badge/Tailwind_v4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
- 
+
 **Infrastructure**
- 
+
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
@@ -107,20 +114,20 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 ![VPS](https://img.shields.io/badge/VPS_Deployment-0F4C5C?style=flat)
 ![OpenMP](https://img.shields.io/badge/OpenMP-0070D1?style=flat)
 ![MPI](https://img.shields.io/badge/MPI-003594?style=flat)
- 
+
 **Embedded & Hardware**
- 
+
 ![Zephyr](https://img.shields.io/badge/Zephyr_RTOS-512BD4?style=flat)
 ![nRF](https://img.shields.io/badge/nRF54L15-00A9CE?style=flat&logo=nordicsemiconductor&logoColor=white)
 ![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=flat&logo=mathworks&logoColor=white)
 ![Isaac Lab](https://img.shields.io/badge/Isaac_Lab-76B900?style=flat&logo=nvidia&logoColor=white)
 ![Autodesk APS](https://img.shields.io/badge/Autodesk_APS-0696D7?style=flat&logo=autodesk&logoColor=white)
 ![IFC4 BIM](https://img.shields.io/badge/IFC4_BIM-1F5582?style=flat)
- 
+
 ---
- 
+
 ### Featured Projects
- 
+
 | Project | Description | Stack |
 | --- | --- | --- |
 | [**SafetyCommander**](https://github.com/HumphreySun98/safety-commander-agent) *(built at Zapdos Labs × Antler hackathon; ongoing)* | Autonomous factory-safety AI agent: a VLM (Qwen3-VL on vLLM) watches the floor on camera and judges risk **by reading the site's written safety policy**, citing the controlling clause, in a sense→think→act→report loop. Risk is decided in exactly one module; YOLO only grounds facts, RAG only cites OSHA standards — edit one line of policy and the verdict flips. Two-role web app (worker inbox + manager console), trilingual. | Qwen3-VL, vLLM, YOLO, RAG, Flask |
@@ -133,14 +140,13 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 | [**Agentic Weather Assistant**](https://github.com/HumphreySun98/agentic-weather-assistant) | Full-stack agentic web app with 3-service architecture: React frontend + FastAPI backend (LangChain ReAct agent + LangGraph) + custom MCP microservice wrapping a public REST API. Pydantic-validated typed tool-calling across services. | React, FastAPI, LangChain, LangGraph, MCP |
 | [**Dual-Stream Gesture Transformer**](https://github.com/HumphreySun98/dual-stream-gesture-transformer) | Real-time hand gesture recognition via a Dual-Stream Spatiotemporal Transformer on MediaPipe skeletons. **557 FPS GPU** (1.79 ms latency), 88.2% accuracy with 35 labeled samples via Sim-to-Real training. | Python, PyTorch, MediaPipe |
 | [**Deep Learning for BLE Sensing**](https://github.com/HumphreySun98/Deep-Learning-for-BLE-Sensing) | End-to-end super-resolution pipeline recovering wideband LoRa channel responses from narrowband BLE RSSI via progressive sub-pixel convolution. | Python, PyTorch, C |
- 
+
 ---
- 
+
 ### Research & Publications
- 
+
 - **Robotic Manipulation RL — Sim-to-Real on Franka & xArm** *(paper in preparation)*: Contact-rich policy training in Isaac Lab with sim-to-real transfer to physical hardware.
 - **Peer Reviewer**, *AgentSkills Workshop*, ACM CAIS 2026 (ACM Conference on AI and Agentic Systems)
 - **Peer Reviewer**, *IEEE Wireless Communications Letters*
 - **2 Chinese patents accepted** on mixed-signal circuit techniques
 - **Provincial Second Prize**, China Undergraduate Mathematical Contest in Modeling
- 
