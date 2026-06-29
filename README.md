@@ -36,7 +36,7 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 ---
 
-### Open Source — LLM Infrastructure Contributions
+### Open Source Contributions
 
 #### [vllm-project/vllm](https://github.com/vllm-project/vllm) (~85k★) — the core LLM inference engine
 
