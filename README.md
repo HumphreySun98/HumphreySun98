@@ -15,6 +15,7 @@
 [![vLLM production-stack Merged](https://img.shields.io/badge/vLLM_production--stack-PR_Merged-30A14E?style=flat)](https://github.com/vllm-project/production-stack/pull/976)
 [![LiteLLM PR Merged](https://img.shields.io/badge/LiteLLM-PR_%2329707_Merged-00B8D9?style=flat)](https://github.com/BerriAI/litellm/pull/29707)
 [![LangChain PR Merged](https://img.shields.io/badge/LangChain-PR_%231085_Merged-1C3C3C?style=flat)](https://github.com/langchain-ai/langchain-aws/pull/1085)
+[![Blog](https://img.shields.io/badge/Blog-SafetyCommander_Architecture-0A0A0A?style=flat&logo=devdotto&logoColor=white)](https://dev.to/humphreysun98/safetycommander-an-ai-safety-officer-where-the-model-reasons-and-the-code-never-decides-4765)
 
 ---
 
@@ -28,7 +29,7 @@ Engineer who connects hardware signals to intelligent software, and who ships sy
 - Shipped **Archiagents** (https://archiagents.com/) — an end-to-end AI agent for architectural design that takes project briefs through to IFC4 BIM models and photorealistic renders. Owned engineering implementation and VPS deployment (2-person team)
 - Deployed a **Claude-powered learning agent** live on **Chrome Web Store** + HuggingFace, with a 4-policy benchmark and an honestly-reported finding that a rule-based heuristic outperformed Q-learning on short-horizon tasks
 - Shipped **RepoAgentBench**, an open-source toolkit that mines merged PRs into reproducible coding-agent benchmarks; tested 4 frontier LLMs across claude-code and aider with real API spend
-- Built **SafetyCommander** at the Zapdos Labs × Antler hackathon (ongoing) — an autonomous factory-safety agent where a VLM (Qwen3-VL on vLLM) judges risk by reading the site's written safety policy and citing the controlling clause; risk lives in one module, YOLO/RAG only ground facts
+- Built **SafetyCommander** at the Zapdos Labs × Antler hackathon (ongoing) — an autonomous factory-safety agent where a VLM (Qwen3-VL on vLLM) judges risk by reading the site's written safety policy and citing the controlling clause; risk lives in one module, YOLO/RAG only ground facts — 📝 [architecture write-up](https://dev.to/humphreysun98/safetycommander-an-ai-safety-officer-where-the-model-reasons-and-the-code-never-decides-4765)
 - Running a **production LLM API gateway** (https://api.manxuezhida.com) with multi-provider routing, load balancing, and key management — serves my downstream products
 - **Summer 2026** intern at Halo Microelectronics — full-stack AI agent system for analog IC design (RAG + agent orchestration)
 
@@ -36,7 +37,7 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 ---
 
-### Open Source Contributions
+### Open Source — LLM Infrastructure Contributions
 
 #### [vllm-project/vllm](https://github.com/vllm-project/vllm) (~85k★) — the core LLM inference engine
 
@@ -130,7 +131,7 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 | Project | Description | Stack |
 | --- | --- | --- |
-| [**SafetyCommander**](https://github.com/HumphreySun98/safety-commander-agent) *(built at Zapdos Labs × Antler hackathon; ongoing)* | Autonomous factory-safety AI agent: a VLM (Qwen3-VL on vLLM) watches the floor on camera and judges risk **by reading the site's written safety policy**, citing the controlling clause, in a sense→think→act→report loop. Risk is decided in exactly one module; YOLO only grounds facts, RAG only cites OSHA standards — edit one line of policy and the verdict flips. Two-role web app (worker inbox + manager console), trilingual. | Qwen3-VL, vLLM, YOLO, RAG, Flask |
+| [**SafetyCommander**](https://github.com/HumphreySun98/safety-commander-agent) *(built at Zapdos Labs × Antler hackathon; ongoing)* | Autonomous factory-safety AI agent: a VLM (Qwen3-VL on vLLM) watches the floor on camera and judges risk **by reading the site's written safety policy**, citing the controlling clause, in a sense→think→act→report loop. Risk is decided in exactly one module; YOLO only grounds facts, RAG only cites OSHA standards — edit one line of policy and the verdict flips. Two-role web app (worker inbox + manager console), trilingual. 📝 [Architecture write-up on dev.to](https://dev.to/humphreysun98/safetycommander-an-ai-safety-officer-where-the-model-reasons-and-the-code-never-decides-4765). | Qwen3-VL, vLLM, YOLO, RAG, Flask |
 | [**Archiagents** — https://archiagents.com/](https://archiagents.com/) | End-to-end AI agent for architectural design (2-person team). Ingests project briefs + CAD/DWG/IFC/Revit files, conducts requirement dialogue, generates design schemes, renders photorealistic visualizations (gpt-image-1), and outputs IFC4 BIM models with embedded Autodesk APS viewer. Multi-LLM backend (Claude / GPT / Gemini); deployed on custom domain via VPS. | Vercel AI SDK, shadcn/ui, gpt-image-1, Autodesk APS, IFC4 |
 | [**LLM API Gateway** — https://api.manxuezhida.com](https://api.manxuezhida.com) | Production LLM API proxy serving multiple providers (Claude / GPT / Gemini) with load balancing, API key management, and request routing. Powers SmartStudy Agent, Archiagents, and other downstream products. Custom domain on VPS. | Node.js, Express, VPS |
 | [**SmartStudy Agent**](https://github.com/HumphreySun98/Smart-Study-Agent) *([Web](https://huggingface.co/spaces/HumphreySun98/smart-study-agent) · [Chrome Extension](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik))* | Closed-loop POMDP learning agent with 4-policy benchmark (Random / Rule-based / LinUCB Bandit / Q-learning) over 30 simulated students x 30 sessions. Honestly reported finding: rule-based heuristic +35% over random vs Q-learning +18% — RL is defensible but not dominant in short-horizon regime. Live on Chrome Web Store + HuggingFace; 8-page Streamlit UI; 3 pluggable LLM backends. | Python, Claude API, Streamlit, SQLite, Chrome MV3 |
