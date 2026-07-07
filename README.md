@@ -10,7 +10,8 @@
 [![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
 [![Archiagents Live](https://img.shields.io/badge/Archiagents-Live-FF6B35?style=flat)](https://archiagents.com)
 [![LLM API Gateway](https://img.shields.io/badge/LLM_API_Gateway-api.manxuezhida.com-2496ED?style=flat)](https://api.manxuezhida.com)
-[![vLLM core PR Merged](https://img.shields.io/badge/vLLM_core-CUDA_kernel_PR_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
+[![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
+[![llm-compressor PR Merged](https://img.shields.io/badge/llm--compressor-PR_%232797_Merged-6236FF?style=flat)](https://github.com/vllm-project/llm-compressor/pull/2797)
 [![SGLang PRs Merged](https://img.shields.io/badge/SGLang-2_PRs_Merged-EE4C2C?style=flat)](https://github.com/sgl-project/sglang/pull/26971)
 [![vLLM production-stack Merged](https://img.shields.io/badge/vLLM_production--stack-PR_Merged-30A14E?style=flat)](https://github.com/vllm-project/production-stack/pull/976)
 [![LiteLLM PR Merged](https://img.shields.io/badge/LiteLLM-PR_%2329707_Merged-00B8D9?style=flat)](https://github.com/BerriAI/litellm/pull/29707)
@@ -23,7 +24,7 @@
 
 Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. Recently I've contributed merged fixes to leading LLM-infrastructure projects — including a **CUDA kernel correctness fix in vLLM core** — built embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), trained deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, and shipped full-stack LLM agents live on the Chrome Web Store and in production.
 
-- **Contributed to leading LLM-infrastructure ecosystems** — merged PRs into **vLLM** (core engine: a CUDA kernel alignment fix + production-stack), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain**, spanning a KV-cache CUDA kernel bug, multi-tenant batching, multi-region routing, prompt-encoding, and cross-platform deployment (details below)
+- **Contributed to leading LLM-infrastructure ecosystems — 8 merged PRs** — into **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, and cross-platform deployment (details below)
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals with **0.986 R2** on chirp recovery
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
 - Shipped **Archiagents** (https://archiagents.com/) — an end-to-end AI agent for architectural design that takes project briefs through to IFC4 BIM models and photorealistic renders. Owned engineering implementation and VPS deployment (2-person team)
@@ -42,6 +43,12 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 #### [vllm-project/vllm](https://github.com/vllm-project/vllm) (~85k★) — the core LLM inference engine
 
 - **[PR #45466](https://github.com/vllm-project/vllm/pull/45466) (merged):** CUDA kernel correctness fix. Root-caused a `CUDA error: misaligned address` crash (surfacing via FlexAttention with `head_size=46`) that had been misattributed across the issue thread to FlexAttention, CUDA graphs, and GPU drivers. Real cause: the shared `vectorize_with_alignment` helper only checked the *input* pointer's alignment — but in `reshape_and_cache_flash` the destination KV-cache row isn't 16-byte-aligned for head sizes not a multiple of 8, so the kernel's 16-byte vectorized stores faulted. Added an output-pointer alignment check + scalar fallback, eliminating the unguarded-store hazard for every caller (incl. fp8/int8 quant kernels), Linux behavior byte-for-byte unchanged. Added a GPU regression test (`head_size=46`); merged into main by a core committer.
+
+- **[PR #45352](https://github.com/vllm-project/vllm/pull/45352) (merged):** Speculative-decoding correctness fix. Root-caused a recurring CI OOM to a silent config-propagation bug: the draft-model config hardcoded its own `hf_overrides`, silently dropping the target model's — so test-shrinking overrides never reached the Eagle draft, which instantiated at full 675B-scale dimensions. Fixed by composing the target's callable override with the draft's; also resolved a multiprocessing-pickling failure the composition introduced (nested closure → `functools.partial` on a static method) since vLLM's engine core pickles configs across `spawn`. Added a picklability regression test; re-enabled a previously-excluded test path. Shepherded and merged by a core maintainer.
+
+#### [vllm-project/llm-compressor](https://github.com/vllm-project/llm-compressor) — vLLM's model-quantization toolkit
+
+- **[PR #2797](https://github.com/vllm-project/llm-compressor/pull/2797) (merged):** Added IBM Granite (`GraniteForCausalLM`) to the AWQ and SmoothQuant quantization mapping registries, with meta-device tests that instantiate the model skeleton and validate mapping regexes against the real module tree. Also unblocked the merge itself by resolving a `test_utils.py` rebase conflict that the maintainers' automation couldn't.
 
 #### [sgl-project/sglang](https://github.com/sgl-project/sglang) (~29k★) — high-performance LLM/multimodal inference-serving framework
 
