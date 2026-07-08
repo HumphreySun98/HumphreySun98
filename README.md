@@ -13,7 +13,7 @@
 [![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
 [![llm-compressor PR Merged](https://img.shields.io/badge/llm--compressor-PR_%232797_Merged-6236FF?style=flat)](https://github.com/vllm-project/llm-compressor/pull/2797)
 [![SGLang PRs Merged](https://img.shields.io/badge/SGLang-2_PRs_Merged-EE4C2C?style=flat)](https://github.com/sgl-project/sglang/pull/26971)
-[![vLLM production-stack Merged](https://img.shields.io/badge/vLLM_production--stack-PR_Merged-30A14E?style=flat)](https://github.com/vllm-project/production-stack/pull/976)
+[![vLLM production-stack Merged](https://img.shields.io/badge/vLLM_production--stack-3_PRs_Merged-30A14E?style=flat)](https://github.com/vllm-project/production-stack/pull/969)
 [![LiteLLM PR Merged](https://img.shields.io/badge/LiteLLM-PR_%2329707_Merged-00B8D9?style=flat)](https://github.com/BerriAI/litellm/pull/29707)
 [![LangChain PR Merged](https://img.shields.io/badge/LangChain-PR_%231085_Merged-1C3C3C?style=flat)](https://github.com/langchain-ai/langchain-aws/pull/1085)
 [![Blog](https://img.shields.io/badge/Blog-SafetyCommander_Architecture-0A0A0A?style=flat&logo=devdotto&logoColor=white)](https://dev.to/humphreysun98/safetycommander-an-ai-safety-officer-where-the-model-reasons-and-the-code-never-decides-4765)
@@ -24,7 +24,7 @@
 
 Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. Recently I've contributed merged fixes to leading LLM-infrastructure projects — including a **CUDA kernel correctness fix in vLLM core** — built embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), trained deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, and shipped full-stack LLM agents live on the Chrome Web Store and in production.
 
-- **Contributed to leading LLM-infrastructure ecosystems — 8 merged PRs** — into **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, and cross-platform deployment (details below)
+- **Contributed to leading LLM-infrastructure ecosystems — 10 merged PRs** — into **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** (3 merged: a router param-forwarding fix + cross-platform install tooling) and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, request routing, and cross-platform deployment (details below)
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals with **0.986 R2** on chirp recovery
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
 - Shipped **Archiagents** (https://archiagents.com/) — an end-to-end AI agent for architectural design that takes project briefs through to IFC4 BIM models and photorealistic renders. Owned engineering implementation and VPS deployment (2-person team)
@@ -61,7 +61,9 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 #### [vllm-project/production-stack](https://github.com/vllm-project/production-stack) — official Kubernetes deployment stack for vLLM
 
-- **[PR #976](https://github.com/vllm-project/production-stack/pull/976) (merged):** Added macOS support to the cluster install tooling via `uname`-based OS/arch detection (linux/darwin × amd64/arm64), so the kubectl install script fetches the matching release instead of assuming Linux. (Companion PR #970 extends the same cross-platform support to the minikube cluster script — approved, pending final merge.)
+- **[PR #969](https://github.com/vllm-project/production-stack/pull/969) (merged):** Router bug fix — `route_sleep_wakeup_request` consumed only the router-internal `id` query param and silently dropped the rest, so `POST /sleep?id=X&level=2` degraded to `level=1` (vLLM never saw `level=2`); same for `mode` on `/sleep` and `tags` on `/wake_up`. Fixed by forwarding all non-`id` query params to every upstream call.
+- **[PR #976](https://github.com/vllm-project/production-stack/pull/976) (merged):** Added macOS support to the cluster install tooling via `uname`-based OS/arch detection (linux/darwin × amd64/arm64), so the kubectl install script fetches the matching release instead of assuming Linux.
+- **[PR #970](https://github.com/vllm-project/production-stack/pull/970) (merged):** Extended the same cross-platform support to the minikube cluster script — uname-based binary selection, `sysctl -n hw.memsize` for macOS memory sizing, and Linux-only `systemctl`/`sysctl` calls gated behind an OS check.
 
 #### [langchain-ai/langchain-aws](https://github.com/langchain-ai/langchain-aws) — AWS/Bedrock integrations for LangChain
 
@@ -153,7 +155,7 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 ### Research & Publications
 
-- **Robotic Manipulation RL — Sim-to-Real on Franka & xArm** *(paper in preparation)*: Contact-rich policy training in Isaac Lab with sim-to-real transfer to physical hardware.
+- **Robotic Manipulation RL — Sim-to-Real on Franka & xArm** (Texas Tech collaboration): contact-rich policy training in Isaac Lab with sim-to-real transfer to physical hardware.
 - **Peer Reviewer**, *AgentSkills Workshop*, ACM CAIS 2026 (ACM Conference on AI and Agentic Systems)
 - **Peer Reviewer**, *IEEE Wireless Communications Letters*
 - **2 Chinese patents accepted** on mixed-signal circuit techniques
