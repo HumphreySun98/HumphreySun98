@@ -10,7 +10,7 @@
 [![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
 [![Archiagents Live](https://img.shields.io/badge/Archiagents-Live-FF6B35?style=flat)](https://archiagents.com)
 [![LLM API Gateway](https://img.shields.io/badge/LLM_API_Gateway-api.manxuezhida.com-2496ED?style=flat)](https://api.manxuezhida.com)
-[![hermes-agent PR Merged](https://img.shields.io/badge/hermes--agent_(210k★)-PR_Merged-000000?style=flat)](https://github.com/NousResearch/hermes-agent/pull/61142)
+[![hermes-agent PR Merged](https://img.shields.io/badge/hermes--agent-PR_Merged-000000?style=flat)](https://github.com/NousResearch/hermes-agent/pull/61835)
 [![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
 [![llm-compressor PR Merged](https://img.shields.io/badge/llm--compressor-PR_%232797_Merged-6236FF?style=flat)](https://github.com/vllm-project/llm-compressor/pull/2797)
 [![SGLang PRs Merged](https://img.shields.io/badge/SGLang-2_PRs_Merged-EE4C2C?style=flat)](https://github.com/sgl-project/sglang/pull/26971)
@@ -41,9 +41,9 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 ### Open Source — LLM & Agent Ecosystem Contributions
 
-#### [hermes-agent](https://github.com/NousResearch/hermes-agent) (~210k★) — agent framework
+#### [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) (~210k★) — Nous Research's agent framework
 
-- **[PR #61142](https://github.com/NousResearch/hermes-agent/pull/61142) (merged):** fixed a crash on null web/backend configuration and added regression tests; merged into `main`.
+- **[PR #61835](https://github.com/NousResearch/hermes-agent/pull/61835) (merged):** fixed a crash on null web/backend configuration and added regression tests; merged into `main`.
 
 #### [vllm-project/vllm](https://github.com/vllm-project/vllm) (~85k★) — the core LLM inference engine
 
