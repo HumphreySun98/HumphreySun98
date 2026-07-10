@@ -10,6 +10,7 @@
 [![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
 [![Archiagents Live](https://img.shields.io/badge/Archiagents-Live-FF6B35?style=flat)](https://archiagents.com)
 [![LLM API Gateway](https://img.shields.io/badge/LLM_API_Gateway-api.manxuezhida.com-2496ED?style=flat)](https://api.manxuezhida.com)
+[![Nous Research hermes-agent](https://img.shields.io/badge/NousResearch-hermes--agent_Merged-000000?style=flat)](https://github.com/NousResearch/hermes-agent)
 [![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
 [![llm-compressor PR Merged](https://img.shields.io/badge/llm--compressor-PR_%232797_Merged-6236FF?style=flat)](https://github.com/vllm-project/llm-compressor/pull/2797)
 [![SGLang PRs Merged](https://img.shields.io/badge/SGLang-2_PRs_Merged-EE4C2C?style=flat)](https://github.com/sgl-project/sglang/pull/26971)
@@ -24,7 +25,7 @@
 
 Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. Recently I've contributed merged fixes to leading LLM-infrastructure projects — including a **CUDA kernel correctness fix in vLLM core** — built embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), trained deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, and shipped full-stack LLM agents live on the Chrome Web Store and in production.
 
-- **Contributed to leading LLM-infrastructure ecosystems — 10 merged PRs** — into **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** (3 merged: a router param-forwarding fix + cross-platform install tooling) and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, request routing, and cross-platform deployment (details below)
+- **Contributed to leading LLM & agent ecosystems — 11 merged PRs** — including a merged fix in **NousResearch/hermes-agent** (Nous Research's agent framework — code in main, authorship preserved, merged by a co-founder); **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** (3 merged: a router param-forwarding fix + cross-platform install tooling) and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, request routing, and cross-platform deployment (details below)
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals with **0.986 R2** on chirp recovery
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
 - Shipped **Archiagents** (https://archiagents.com/) — an end-to-end AI agent for architectural design that takes project briefs through to IFC4 BIM models and photorealistic renders. Owned engineering implementation and VPS deployment (2-person team)
@@ -38,7 +39,11 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 ---
 
-### Open Source — LLM Infrastructure Contributions
+### Open Source — LLM & Agent Ecosystem Contributions
+
+#### [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — Nous Research's agent framework
+
+- **Merged fix (code in `main`, authorship preserved):** fixed a crash on null web/backend configuration and added regression tests. My commit was carried into `main` with authorship preserved and merged by a project co-founder.
 
 #### [vllm-project/vllm](https://github.com/vllm-project/vllm) (~85k★) — the core LLM inference engine
 
@@ -153,10 +158,11 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 ---
 
-### Research & Publications
+### Research & Service
 
 - **Robotic Manipulation RL — Sim-to-Real on Franka & xArm** (Texas Tech collaboration): contact-rich policy training in Isaac Lab with sim-to-real transfer to physical hardware.
 - **Peer Reviewer**, *AgentSkills Workshop*, ACM CAIS 2026 (ACM Conference on AI and Agentic Systems)
 - **Peer Reviewer**, *IEEE Wireless Communications Letters*
-- **2 Chinese patents accepted** on mixed-signal circuit techniques
+- **2 Chinese patents (filed)** on mixed-signal circuit techniques
 - **Provincial Second Prize**, China Undergraduate Mathematical Contest in Modeling
+
