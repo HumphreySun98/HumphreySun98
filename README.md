@@ -10,7 +10,7 @@
 [![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
 [![Archiagents Live](https://img.shields.io/badge/Archiagents-Live-FF6B35?style=flat)](https://archiagents.com)
 [![LLM API Gateway](https://img.shields.io/badge/LLM_API_Gateway-api.manxuezhida.com-2496ED?style=flat)](https://api.manxuezhida.com)
-[![hermes-agent PR Merged](https://img.shields.io/badge/hermes--agent-PR_Merged-000000?style=flat)](https://github.com/NousResearch/hermes-agent/pull/61835)
+[![hermes-agent PRs Merged](https://img.shields.io/badge/hermes--agent-2_PRs_Merged-000000?style=flat)](https://github.com/NousResearch/hermes-agent/pull/64771)
 [![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
 [![llm-compressor PR Merged](https://img.shields.io/badge/llm--compressor-PR_%232797_Merged-6236FF?style=flat)](https://github.com/vllm-project/llm-compressor/pull/2797)
 [![SGLang PRs Merged](https://img.shields.io/badge/SGLang-2_PRs_Merged-EE4C2C?style=flat)](https://github.com/sgl-project/sglang/pull/26971)
@@ -25,7 +25,7 @@
 
 Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. Recently I've contributed merged fixes to leading LLM-infrastructure projects — including a **CUDA kernel correctness fix in vLLM core** — built embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), trained deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, and shipped full-stack LLM agents live on the Chrome Web Store and in production.
 
-- **Contributed to leading LLM & agent ecosystems — 11 merged PRs** — including a merged fix in **hermes-agent** (~210k★); **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** (3 merged: a router param-forwarding fix + cross-platform install tooling) and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, request routing, and cross-platform deployment (details below)
+- **Contributed to leading LLM & agent ecosystems — 12 merged PRs** — including two merged fixes in **hermes-agent** (~216k★): a crash fix on null web/backend config, and a cost-safe model-routing fix that stops a bare-provider `/model` switch from silently landing on the priciest flagship model; **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** (3 merged: a router param-forwarding fix + cross-platform install tooling) and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning agent-framework routing, a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, and cross-platform deployment (details below)
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals with **0.986 R2** on chirp recovery
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
 - Shipped **Archiagents** (https://archiagents.com/) — an end-to-end AI agent for architectural design that takes project briefs through to IFC4 BIM models and photorealistic renders. Owned engineering implementation and VPS deployment (2-person team)
@@ -41,8 +41,9 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 
 ### Open Source — LLM & Agent Ecosystem Contributions
 
-#### [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) (~210k★) — Nous Research's agent framework
+#### [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) (~216k★) — Nous Research's agent framework
 
+- **[PR #64771](https://github.com/NousResearch/hermes-agent/pull/64771) (merged):** cost-safe model routing — a bare-provider `/model` switch was silently routing to the priciest flagship model (a billing footgun that once escalated to a premium model and billed 863 requests before the user noticed); routed it through the cost-safe default instead, with regression tests. Merged into `main`.
 - **[PR #61835](https://github.com/NousResearch/hermes-agent/pull/61835) (merged):** fixed a crash on null web/backend configuration and added regression tests; merged into `main`.
 
 #### [vllm-project/vllm](https://github.com/vllm-project/vllm) (~85k★) — the core LLM inference engine
