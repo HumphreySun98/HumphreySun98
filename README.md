@@ -10,6 +10,7 @@
 [![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
 [![Archiagents Live](https://img.shields.io/badge/Archiagents-Live-FF6B35?style=flat)](https://archiagents.com)
 [![LLM API Gateway](https://img.shields.io/badge/LLM_API_Gateway-api.manxuezhida.com-2496ED?style=flat)](https://api.manxuezhida.com)
+[![Anthropic claude-code-action PR Merged](https://img.shields.io/badge/anthropic_claude--code--action-PR_Merged-D97757?style=flat)](https://github.com/anthropics/claude-code-action/pull/1488)
 [![hermes-agent PRs Merged](https://img.shields.io/badge/hermes--agent-2_PRs_Merged-000000?style=flat)](https://github.com/NousResearch/hermes-agent/pull/64771)
 [![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
 [![llm-compressor PR Merged](https://img.shields.io/badge/llm--compressor-PR_%232797_Merged-6236FF?style=flat)](https://github.com/vllm-project/llm-compressor/pull/2797)
@@ -25,7 +26,7 @@
 
 Engineer who connects hardware signals to intelligent software, and who ships systems honestly — including when the simple baseline wins. Recently I've contributed merged fixes to leading LLM-infrastructure projects — including a **CUDA kernel correctness fix in vLLM core** — built embedded RTOS firmware sampling RF at **77 kHz** (3x prior published rates), trained deep-learning models that **recover signals lost to aliasing** with **0.986 R2** on chirp recovery, and shipped full-stack LLM agents live on the Chrome Web Store and in production.
 
-- **Contributed to leading LLM & agent ecosystems — 12 merged PRs** — including two merged fixes in **hermes-agent** (~216k★): a crash fix on null web/backend config, and a cost-safe model-routing fix that stops a bare-provider `/model` switch from silently landing on the priciest flagship model; **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** (3 merged: a router param-forwarding fix + cross-platform install tooling) and **llm-compressor** (Granite AWQ/SmoothQuant quantization mappings), **SGLang** (~29k★ serving framework), **LiteLLM** (50k★ gateway), and **LangChain** — spanning agent-framework routing, a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization tooling, multi-region routing, prompt-encoding, and cross-platform deployment (details below)
+- **Contributed to leading LLM & agent ecosystems — 13 merged PRs** — including a **security fix merged into Anthropic's official [claude-code-action](https://github.com/anthropics/claude-code-action) (8.4k★)** closing a prompt-injection channel in the content sanitizer; two merged fixes in **hermes-agent** (~216k★): a crash fix on null web/backend config, and a cost-safe model-routing fix that stops a bare-provider `/model` switch from silently landing on the priciest flagship model; **vLLM core** (a CUDA kernel alignment fix **+ a speculative-decoding config-propagation fix**), **vLLM production-stack** (3 merged) and **llm-compressor** (Granite AWQ/SmoothQuant quantization), **SGLang** (~29k★), **LiteLLM** (50k★), and **LangChain** — spanning AI-safety sanitization, agent-framework routing, a KV-cache CUDA kernel bug, spec-decode correctness, multi-tenant batching, quantization, and cross-platform deployment (details below)
 - Built a **physics-informed neural network** on NVIDIA B200 reconstructing aliased RF signals with **0.986 R2** on chirp recovery
 - Custom **Zephyr RTOS firmware** on nRF54L15 hitting **77 kHz BLE RSSI** sampling with <0.01% drop rate
 - Shipped **Archiagents** (https://archiagents.com/) — an end-to-end AI agent for architectural design that takes project briefs through to IFC4 BIM models and photorealistic renders. Owned engineering implementation and VPS deployment (2-person team)
@@ -40,6 +41,10 @@ Interests: LLM serving infrastructure, edge AI, wireless sensing, LLM agents, si
 ---
 
 ### Open Source — LLM & Agent Ecosystem Contributions
+
+#### [anthropics/claude-code-action](https://github.com/anthropics/claude-code-action) (8.4k★) — Anthropic's official GitHub Action
+
+- **[PR #1488](https://github.com/anthropics/claude-code-action/pull/1488) (merged):** security fix in the content sanitizer — prompt-injection alt-text was stripped from inline images `![alt](url)` but not reference-style images `![alt][ref]`, leaving a hidden-instruction channel that reached the model; closed the gap and added regression tests (771 tests pass). Reviewed and merged into `main` by an Anthropic engineer.
 
 #### [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) (~216k★) — Nous Research's agent framework
 
