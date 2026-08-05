@@ -45,7 +45,7 @@ AI Agents · LLM Infrastructure · Deep Learning for Wireless Sensing
 <summary><b>For recruiters · researchers · founders — 10-second version</b></summary>
 
 - **Recruiters:** 14 merged PRs across PyTorch / Anthropic / LangChain / vLLM / SGLang · shipped products · Dec 2026 grad seeking SWE/AI/ML roles.
-- **Researchers:** first-author AAAI 2027 submission on agent memory verification · contamination-free agent benchmarking · two ICRA 2027 manuscripts in preparation · AAAI & IEEE-HKN member.
+- **Researchers:** first-author on agent memory verification · contamination-free agent benchmarking · AAAI & IEEE-HKN member.
 - **Founders:** I build end to end and ship — agent systems with real verifiers, a live AI product, and a production LLM gateway serving my own downstream apps.
 
 </details>
