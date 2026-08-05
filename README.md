@@ -2,7 +2,8 @@
 
 **I build LLM systems where the model proposes and deterministic code decides.**
 
-AI Agents · LLM Infrastructure · Deep Learning for Wireless Sensing **Open to full-time SWE / AI / ML Engineer roles.**
+AI Agents · LLM Infrastructure · Deep Learning for Wireless Sensing 
+**Open to full-time SWE / AI / ML Engineer roles.**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
