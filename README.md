@@ -4,11 +4,22 @@
 
 AI Agents · LLM Infrastructure · Embedded Sensing — M.S. CS @ UT Arlington, graduating Dec 2026. **Open to full-time SWE / AI / ML Engineer roles.**
 
-[![arXiv](https://img.shields.io/badge/arXiv-2608.01619-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.01619)
-[![PyTorch](https://img.shields.io/badge/PyTorch_core-contributor-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://github.com/pytorch/pytorch/commit/e9cfafa)
-[![Anthropic](https://img.shields.io/badge/Anthropic-contributor-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/anthropics/claude-code-action/pull/1488)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
-[![Email](https://img.shields.io/badge/Email-contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
+[![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
+[![arXiv](https://img.shields.io/badge/arXiv-2608.01619-B31B1B?style=flat&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.01619)
+[![PyTorch Merged](https://img.shields.io/badge/PyTorch_core-Merged_%40_e9cfafa-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://github.com/pytorch/pytorch/commit/e9cfafa)
+[![Anthropic PR Merged](https://img.shields.io/badge/Anthropic_claude--code--action-PR_Merged-D97757?style=flat)](https://github.com/anthropics/claude-code-action/pull/1488)
+[![LangChain PR Merged](https://img.shields.io/badge/LangChain-PR_Merged-1C3C3C?style=flat)](https://github.com/langchain-ai/langchain-aws/pull/1085)
+[![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
+[![SGLang PRs Merged](https://img.shields.io/badge/SGLang-2_PRs_Merged-EE4C2C?style=flat)](https://github.com/sgl-project/sglang/pull/26971)
+[![hermes-agent PRs Merged](https://img.shields.io/badge/Nous_hermes--agent-2_PRs_Merged-000000?style=flat)](https://github.com/NousResearch/hermes-agent/pull/64771)
+[![LiteLLM PR Merged](https://img.shields.io/badge/LiteLLM-PR_Merged-00B8D9?style=flat)](https://github.com/BerriAI/litellm/pull/29707)
+[![llm-compressor PR Merged](https://img.shields.io/badge/llm--compressor-PR_Merged-6236FF?style=flat)](https://github.com/vllm-project/llm-compressor/pull/2797)
+[![vLLM production-stack Merged](https://img.shields.io/badge/vLLM_production--stack-3_PRs_Merged-30A14E?style=flat)](https://github.com/vllm-project/production-stack/pull/969)
+[![SmartStudy on Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-SmartStudy_Live-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik)
+[![Archiagents Live](https://img.shields.io/badge/Archiagents-Live-FF6B35?style=flat)](https://archiagents.com)
+[![LLM API Gateway](https://img.shields.io/badge/LLM_API_Gateway-api.manxuezhida.com-2496ED?style=flat)](https://api.manxuezhida.com)
+[![Blog](https://img.shields.io/badge/Blog-SafetyCommander_Architecture-0A0A0A?style=flat&logo=devdotto&logoColor=white)](https://dev.to/humphreysun98/safetycommander-an-ai-safety-officer-where-the-model-reasons-and-the-code-never-decides-4765)
 
 ---
 
@@ -117,6 +128,10 @@ AI Agents · LLM Infrastructure · Embedded Sensing — M.S. CS @ UT Arlington, 
 
 ---
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=HumphreySun98&show_icons=true&theme=default&hide_border=true&count_private=true" alt="GitHub stats" height="160"/>
-</p>
+### 2,280+ contributions in the last year
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/output/github-snake.svg" />
+  <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/output/github-snake.svg" />
+</picture>
