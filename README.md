@@ -30,7 +30,6 @@ AI Agents · LLM Infrastructure · Embedded Sensing — M.S. CS @ UT Arlington, 
 |  | The fact | Why it's hard |
 | --- | --- | --- |
 | 🔥 | **Merged into PyTorch core**, reviewed by the **TorchInductor lead** ([`e9cfafa`](https://github.com/pytorch/pytorch/commit/e9cfafa)) | Couldn't build torch locally — proved runtime equivalence by diffing both versions across **18 behavioral dimensions**; then **unblocked my own merge** by proving an unrelated ROCm CI failure independent with four reproducible lines of evidence |
-| 📄 | **First-author paper** — [arXiv:2608.01619](https://arxiv.org/abs/2608.01619), AAAI 2027 submission | Showed agents act on facts they *already know* are stale (recall collapses 0.44–1.0 → **0.06–0.38** open-ended, worse under CoT); fixed it with LLM-proposed / code-verified repairs: **+5.0 pts**, reproduced by a disjoint judge |
 | ⚡ | **An agent loop that designs real analog circuits** (Summer 2026, Halo Microelectronics) | No numeric optimizer — LLM proposes experiment batches, a simulator holds authority over truth: **4 rounds, ~100× error reduction, 42 evaluations, 5 LLM calls, ~7 minutes**, beating the accuracy floor in the company's own codebase |
 | 🔬 | **CUDA kernel correctness fix in vLLM core** (~85k★) ([#45466](https://github.com/vllm-project/vllm/pull/45466)) | The issue thread blamed FlexAttention, CUDA graphs, and drivers — the real cause was an unchecked destination-pointer alignment in the KV-cache write path; fixed for every caller |
 | 📡 | **77 kHz BLE RSSI firmware** (Zephyr RTOS, nRF54L15) → **0.986 R²** recovering signals **5.3× below Nyquist** | 3× the highest published sampling rate, feeding a physics-informed network that recovers what classical sampling theory says is unrecoverable |
@@ -183,12 +182,11 @@ AI Agents · LLM Infrastructure · Embedded Sensing — M.S. CS @ UT Arlington, 
 
 ### Research & Service
 
-- **First author** — *When Memory Updates but Behavior Does Not: Repairing Implicit Stale Dependencies in Personalized Agent Responses* · [arXiv:2608.01619](https://arxiv.org/abs/2608.01619) · under submission, AAAI 2027
-- Two additional first-author-track manuscripts in preparation, targeting **ICRA 2027**
-- **Robotic manipulation RL** — sim-to-real on Franka & xArm (Texas Tech collaboration), contact-rich policies in Isaac Lab
+- **First author** — *When Memory Updates but Behavior Does Not: Repairing Implicit Stale Dependencies in Personalized Agent Responses* · [arXiv:2608.01619](https://arxiv.org/abs/2608.01619) 
+- **Robotic manipulation RL** — sim-to-real on Franka & xArm, contact-rich policies in Isaac Lab
 - **Peer Reviewer** — AgentSkills Workshop @ ACM CAIS 2026 · *IEEE Wireless Communications Letters*
-- **Member** — AAAI · IEEE-HKN &nbsp;|&nbsp; **TA of the Month** — UT Arlington CSE
-- 2 Chinese patents (filed) · Provincial 2nd Prize, China Undergraduate Mathematical Contest in Modeling
+- **Member** — AAAI · IEEE-HKN &nbsp;|&nbsp; 
+- 2 Chinese patents · Provincial 2nd Prize, China Undergraduate Mathematical Contest in Modeling
 
 ---
 
