@@ -195,5 +195,5 @@ AI Agents · LLM Infrastructure · Deep Learning for Wireless Sensing
 ### A Year in Commits
 
 <picture>
-  <img src="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/main/profile-3d-contrib/profile-green-animate.svg" alt="3D contribution graph" width="100%"/>
+  <img src="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/main/profile-3d-contrib/profile-night-green.svg" width="100%"/>
 </picture>
