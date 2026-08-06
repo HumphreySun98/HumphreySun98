@@ -192,7 +192,7 @@ AI Agents · LLM Infrastructure · Deep Learning for Wireless Sensing
 
 ---
 
-### 2,280+ contributions in the last year
+### A Year in Commits
 
 <picture>
   <img src="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/main/profile-3d-contrib/profile-green-animate.svg" alt="3D contribution graph" width="100%"/>
