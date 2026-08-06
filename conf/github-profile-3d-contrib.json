@@ -3,10 +3,10 @@
     "type": "normal",
     "fileName": "manhattan-night.svg",
     "backgroundColor": "#0d1117",
-    "foregroundColor": "#c9d1d9",
+    "foregroundColor": "#30363d",
     "strongColor": "#39d353",
     "weakColor": "#161b22",
-    "radarColor": "#00000000",
+    "radarColor": "#161b22",
     "growingAnimation": true,
     "contribColors": ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
   }
