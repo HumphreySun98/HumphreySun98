@@ -195,7 +195,5 @@ AI Agents · LLM Infrastructure · Deep Learning for Wireless Sensing
 ### 2,280+ contributions in the last year
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/output/github-snake.svg" />
-  <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/output/github-snake.svg" />
+  <img src="https://raw.githubusercontent.com/HumphreySun98/HumphreySun98/main/profile-3d-contrib/profile-night-green.svg" width="100%"/>
 </picture>
