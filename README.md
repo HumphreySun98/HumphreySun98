@@ -2,7 +2,7 @@
 
 **I build LLM systems where the model proposes and deterministic code decides.**
 
-AI Agents · LLM Infrastructure · Deep Learning for Wireless Sensing 
+AI Agents · LLM Infrastructure · Deep Learning
 
 **Open to full-time SWE / AI / ML Engineer roles.**
 
