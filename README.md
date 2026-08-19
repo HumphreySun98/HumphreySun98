@@ -27,7 +27,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 ### Proof of Work
 
-**14 merged pull requests** across the ML stack — [PyTorch](https://github.com/pytorch/pytorch/commit/e9cfafa) · [Anthropic](https://github.com/anthropics/claude-code-action/pull/1488) · [LangChain](https://github.com/langchain-ai/langchain-aws/pull/1085) · [vLLM](https://github.com/vllm-project/vllm/pull/45466) · [SGLang](https://github.com/sgl-project/sglang/pull/26971) · [Nous Research](https://github.com/NousResearch/hermes-agent/pull/64771) · [LiteLLM](https://github.com/BerriAI/litellm/pull/29707) — plus a first-author paper, an agent that designs real circuits, and products live in production.
+**15 merged pull requests** across the ML stack — [PyTorch](https://github.com/pytorch/pytorch/commit/e9cfafa) · [Anthropic](https://github.com/anthropics/claude-code-action/pull/1488) · [LangChain](https://github.com/langchain-ai/langchain-aws/pull/1085) · [vLLM](https://github.com/vllm-project/vllm/pull/45466) · [SGLang](https://github.com/sgl-project/sglang/pull/26971) · [Nous Research](https://github.com/NousResearch/hermes-agent/pull/64771) · [LiteLLM](https://github.com/BerriAI/litellm/pull/29707) — plus a first-author paper, an agent that designs real circuits, and products live in production.
 
 |  | The fact | Why it's hard |
 | --- | --- | --- |
@@ -122,7 +122,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 ---
 
-### Open Source — 14 Merged Pull Requests
+### Open Source — 15 Merged Pull Requests
 
 #### [pytorch/pytorch](https://github.com/pytorch/pytorch) — the framework everything else is built on
 
@@ -158,7 +158,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 #### [vllm-project/llm-compressor](https://github.com/vllm-project/llm-compressor) — vLLM's model-quantization toolkit
 
-- **[PR #2797](https://github.com/vllm-project/llm-compressor/pull/2797) (merged):** Added IBM Granite (`GraniteForCausalLM`) to the AWQ and SmoothQuant quantization mapping registries, with meta-device tests that instantiate the model skeleton and validate mapping regexes against the real module tree. Also unblocked the merge itself by resolving a `test_utils.py` rebase conflict that the maintainers' automation couldn't.
+- **[PR #2797 and #2802](https://github.com/vllm-project/llm-compressor/pull/2797) (merged):** Added IBM Granite (`GraniteForCausalLM`) to the AWQ and SmoothQuant quantization mapping registries, with meta-device tests that instantiate the model skeleton and validate mapping regexes against the real module tree. Also unblocked the merge itself by resolving a `test_utils.py` rebase conflict that the maintainers' automation couldn't.
 
 #### [vllm-project/production-stack](https://github.com/vllm-project/production-stack) — official Kubernetes deployment stack for vLLM
 
