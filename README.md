@@ -9,7 +9,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
 [![arXiv](https://img.shields.io/badge/arXiv-2608.01619-B31B1B?style=flat&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.01619)
-[![PyTorch Merged](https://img.shields.io/badge/PyTorch_core-Merged_%40_e9cfafa-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://github.com/pytorch/pytorch/commit/e9cfafa)
+[![PyTorch Merged](https://img.shields.io/badge/PyTorch_core-2_PRs_Merged-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://github.com/pytorch/pytorch/commit/b78a4fe7)
 [![Anthropic PR Merged](https://img.shields.io/badge/Anthropic_claude--code--action-PR_Merged-D97757?style=flat)](https://github.com/anthropics/claude-code-action/pull/1488)
 [![LangChain PR Merged](https://img.shields.io/badge/LangChain-PR_Merged-1C3C3C?style=flat)](https://github.com/langchain-ai/langchain-aws/pull/1085)
 [![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
@@ -27,11 +27,12 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 ### Proof of Work
 
-**15 merged pull requests** across the ML stack — [PyTorch](https://github.com/pytorch/pytorch/commit/e9cfafa) · [Anthropic](https://github.com/anthropics/claude-code-action/pull/1488) · [LangChain](https://github.com/langchain-ai/langchain-aws/pull/1085) · [vLLM](https://github.com/vllm-project/vllm/pull/45466) · [SGLang](https://github.com/sgl-project/sglang/pull/26971) · [Nous Research](https://github.com/NousResearch/hermes-agent/pull/64771) · [LiteLLM](https://github.com/BerriAI/litellm/pull/29707) — plus a first-author paper, an agent that designs real circuits, and products live in production.
+**16 merged pull requests** across the ML stack — [PyTorch](https://github.com/pytorch/pytorch/commit/e9cfafa) · [Anthropic](https://github.com/anthropics/claude-code-action/pull/1488) · [LangChain](https://github.com/langchain-ai/langchain-aws/pull/1085) · [vLLM](https://github.com/vllm-project/vllm/pull/45466) · [SGLang](https://github.com/sgl-project/sglang/pull/26971) · [Nous Research](https://github.com/NousResearch/hermes-agent/pull/64771) · [LiteLLM](https://github.com/BerriAI/litellm/pull/29707) — plus a first-author paper, an agent that designs real circuits, and products live in production.
 
 |  | The fact | Why it's hard |
 | --- | --- | --- |
 | 🔥 | **Merged into PyTorch core**, reviewed by the **TorchInductor lead** ([`e9cfafa`](https://github.com/pytorch/pytorch/commit/e9cfafa)) | Couldn't build torch locally — proved runtime equivalence by diffing both versions across **18 behavioral dimensions**; then **unblocked my own merge** by proving an unrelated ROCm CI failure independent with four reproducible lines of evidence |
+| 🕵️ | **Second PyTorch core commit** ([`b78a4fe7`](https://github.com/pytorch/pytorch/commit/b78a4fe7)) — killed a dead stack-walk that mislabeled Triton kernels `"self"` in inductor profiling | The maintainer asked "is this working around a GC bug?" and set his bot on the history — its shallow clone couldn't answer. I traced it from the full repo: introduced 2023-02, broken by a 2023-10 lint refactor, dead on 3.13+ since PEP 667. Verified across three interpreters via `uvx`; added the regression tests that hadn't existed in three years |
 | ⚡ | **An agent loop that designs real analog circuits** (Summer 2026, Halo Microelectronics) | No numeric optimizer — LLM proposes experiment batches, a simulator holds authority over truth: **4 rounds, ~100× error reduction, 42 evaluations, 5 LLM calls, ~7 minutes**, beating the accuracy floor in the company's own codebase |
 | 🔬 | **CUDA kernel correctness fix in vLLM core** (~85k★) ([#45466](https://github.com/vllm-project/vllm/pull/45466)) | The issue thread blamed FlexAttention, CUDA graphs, and drivers — the real cause was an unchecked destination-pointer alignment in the KV-cache write path; fixed for every caller |
 | 📡 | **77 kHz BLE RSSI firmware** (Zephyr RTOS, nRF54L15) → **0.986 R²** recovering signals **5.3× below Nyquist** | 3× the highest published sampling rate, feeding a physics-informed network that recovers what classical sampling theory says is unrecoverable |
@@ -44,7 +45,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 <details>
 <summary><b>For recruiters · researchers · founders — 10-second version</b></summary>
 
-- **Recruiters:** 14 merged PRs across PyTorch / Anthropic / LangChain / vLLM / SGLang · shipped products · Dec 2026 grad seeking SWE/AI/ML roles.
+- **Recruiters:** 16 merged PRs across PyTorch / Anthropic / LangChain / vLLM / SGLang · shipped products · Dec 2026 grad seeking SWE/AI/ML roles.
 - **Researchers:** first-author on agent memory verification · contamination-free agent benchmarking · AAAI & IEEE-HKN member.
 - **Founders:** I build end to end and ship — agent systems with real verifiers, a live AI product, and a production LLM gateway serving my own downstream apps.
 
@@ -122,12 +123,16 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 ---
 
-### Open Source — 15 Merged Pull Requests
+### Open Source — 16 Merged Pull Requests
 
 #### [pytorch/pytorch](https://github.com/pytorch/pytorch) — the framework everything else is built on
 
 - **[PR #191866](https://github.com/pytorch/pytorch/pull/191866)** — landed on `main` as [`e9cfafa`](https://github.com/pytorch/pytorch/commit/e9cfafa), reviewed and approved by **@jansel (TorchInductor lead)**. *(PyTorch merges via `pytorchmergebot`, which closes the PR once the commit lands — the commit link is the canonical record.)* Converted three bare expressions in the compiler runtime that *looked* useless but carried side effects into explicit `_ = expr` bindings, and removed the genuinely dead statements in `torch/fx/experimental/unification`. The bare statements turned out to be a historical trick for suppressing F811 warnings; replaced with explicit `# noqa: F811` after establishing via minimal repro that **ruff exempts underscore-prefixed names from F811 — undocumented behavior** that explained why only the public names needed suppression. Unable to build torch locally, I proved runtime equivalence by importing the pre- and post-change packages side by side and diffing **18 dimensions**: per-function behavior, exception types and messages, and the full dispatch registry.
   - **Unblocking the merge:** landing was blocked by a ROCm/gfx950 CI failure. I diagnosed it as `hipErrorIllegalState` (HIP 401) thrown from `hipModuleLaunchKernel` and proved it independent of my change with **four reproducible lines of evidence** — bytecode comparison, config-gating analysis (the relevant flags appear **0 times** in the failure logs), the module never being imported, and elimination of cache bypass — and recommended the maintainer use `@pytorchbot merge -i`. The PR landed.
+- **[PR #192123](https://github.com/pytorch/pytorch/pull/192123)** — landed on `main` as [`b78a4fe7`](https://github.com/pytorch/pytorch/commit/b78a4fe7): `[inductor] Drop the dead frame walk in _find_names`. Removed a stack-walk in inductor's bandwidth profiler that materialized every frame's `f_locals` so `gc.get_referrers()` could see them. The walk only ever surfaced noise (`obj`, `self`); its real harm was the AOTI lazy-compile path, where the intended fallback to `inductor_meta["kernel_name"]` became unreachable and kernels were labeled `"self"`. Dead on Python 3.13+ since PEP 667 (`f_locals` now returns a non-dict `FrameLocalsProxy`); harmful on ≤3.12 — so the change aligns 3.10–3.12 with the already-correct 3.13/3.14 behavior, stated plainly as a behavior change rather than dressed up as cleanup.
+  - **Answering what the maintainer's bot couldn't:** @jansel asked whether the walk was working around a historical GC bug and set his bot on the archaeology; its 20-commit shallow clone came up empty. From the full repo I traced the chain — introduced 2023-02 ([#95355](https://github.com/pytorch/pytorch/pull/95355), starting from `f_back`, so `obj` could never leak), then broken 2023-10 by a flake8-bugbear B020 lint refactor ([#110823](https://github.com/pytorch/pytorch/pull/110823)) that moved the start frame to `currentframe()`. The defect was a lint-cleanup regression all along.
+  - **Tests that never existed:** added regression coverage for three-year-old behavior, including `test_unbound_kernel_falls_back_to_inductor_meta_name` — returns `"self"` on the old code under 3.12, falls back correctly after the fix. One subtle detail: the probe must be a custom class instance, because `object()` isn't gc-tracked and the test would pass on 3.14 while failing on 3.12/3.13. Unable to build torch locally, I verified the patched function against the real call shape across **Python 3.12 / 3.13 / 3.14 via `uvx`** and posted all three results in the PR.
+  - **A public self-correction:** my first fix went the opposite direction — restoring the walk on 3.13+. Verifying against the real call shape showed that would spread the `"self"` bug to newer versions; I force-pushed the reversal and documented why on the PR before any reviewer raised it.
 
 #### [anthropics/claude-code-action](https://github.com/anthropics/claude-code-action) (8.4k★) — Anthropic's official GitHub Action
 
