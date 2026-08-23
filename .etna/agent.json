@@ -1,0 +1,27 @@
+{
+  "schema": "etna-agent-contract/v1",
+  "generatedBy": "Agent Etna",
+  "agent": {
+    "name": "HumphreySun98",
+    "role": null,
+    "repo": "HumphreySun98/HumphreySun98",
+    "branch": "main"
+  },
+  "calibration": null,
+  "guardrails": [
+    "No behavioral calibration set yet — Agent Etna uses general defaults until you calibrate this agent."
+  ],
+  "changelog": [
+    {
+      "date": "2026-08-23",
+      "cycleNumber": 1,
+      "changes": [
+        {
+          "capability": "safety:dialog-scope",
+          "rationale": "The agent needs explicit instructions to refuse off-topic conversational games to maintain focus on its core purpose."
+        }
+      ],
+      "merged": true
+    }
+  ]
+}
