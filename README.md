@@ -9,7 +9,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-haofei--sun-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/haofei-sun)
 [![Email](https://img.shields.io/badge/Email-humphreysun98@gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:humphreysun98@gmail.com)
 [![arXiv](https://img.shields.io/badge/arXiv-2608.01619-B31B1B?style=flat&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.01619)
-[![PyTorch Merged](https://img.shields.io/badge/PyTorch_core-2_PRs_Merged-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://github.com/pytorch/pytorch/commit/b78a4fe7)
+[![PyTorch Merged](https://img.shields.io/badge/PyTorch_core-3_PRs_Merged-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://github.com/pytorch/pytorch/commit/63bd3d6)
 [![Anthropic PR Merged](https://img.shields.io/badge/Anthropic_claude--code--action-PR_Merged-D97757?style=flat)](https://github.com/anthropics/claude-code-action/pull/1488)
 [![LangChain PR Merged](https://img.shields.io/badge/LangChain-PR_Merged-1C3C3C?style=flat)](https://github.com/langchain-ai/langchain-aws/pull/1085)
 [![vLLM core PRs Merged](https://img.shields.io/badge/vLLM_core-2_PRs_Merged-FFD21E?style=flat)](https://github.com/vllm-project/vllm/pull/45466)
@@ -27,11 +27,13 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 ### Proof of Work
 
-**16 merged pull requests** across the ML stack — [PyTorch](https://github.com/pytorch/pytorch/commit/e9cfafa) · [Anthropic](https://github.com/anthropics/claude-code-action/pull/1488) · [LangChain](https://github.com/langchain-ai/langchain-aws/pull/1085) · [vLLM](https://github.com/vllm-project/vllm/pull/45466) · [SGLang](https://github.com/sgl-project/sglang/pull/26971) · [Nous Research](https://github.com/NousResearch/hermes-agent/pull/64771) · [LiteLLM](https://github.com/BerriAI/litellm/pull/29707) — plus a first-author paper, an agent that designs real circuits, and products live in production.
+**17 merged pull requests** across the ML stack — [PyTorch](https://github.com/pytorch/pytorch/commit/e9cfafa) · [Anthropic](https://github.com/anthropics/claude-code-action/pull/1488) · [LangChain](https://github.com/langchain-ai/langchain-aws/pull/1085) · [vLLM](https://github.com/vllm-project/vllm/pull/45466) · [SGLang](https://github.com/sgl-project/sglang/pull/26971) · [Nous Research](https://github.com/NousResearch/hermes-agent/pull/64771) · [LiteLLM](https://github.com/BerriAI/litellm/pull/29707) — plus a first-author paper, an agent that designs real circuits, and products live in production.
 
 |  | The fact | Why it's hard |
 | --- | --- | --- |
 | 🔥 | **Merged into PyTorch core**, reviewed by the **TorchInductor lead** ([`e9cfafa`](https://github.com/pytorch/pytorch/commit/e9cfafa)) | Couldn't build torch locally — proved runtime equivalence by diffing both versions across **18 behavioral dimensions**; then **unblocked my own merge** by proving an unrelated ROCm CI failure independent with four reproducible lines of evidence |
+| 🕵️ | **Second PyTorch core commit** ([`b78a4fe7`](https://github.com/pytorch/pytorch/commit/b78a4fe7)) — killed a dead stack-walk that mislabeled Triton kernels `"self"` in inductor profiling | The maintainer asked "is this working around a GC bug?" and set his bot on the history — its shallow clone couldn't answer. I traced it from the full repo: introduced 2023-02, broken by a 2023-10 lint refactor, dead on 3.13+ since PEP 667. Verified across three interpreters via `uvx`; added the regression tests that hadn't existed in three years |
+| 🧹 | **Third PyTorch core commit** ([`63bd3d6`](https://github.com/pytorch/pytorch/commit/63bd3d6)) — cleared **170 lint violations** to enable flake8-bugbear B007 repo-wide | The original 106-file PR spanned five teams, auto-assigned **11 reviewers**, and stalled for four weeks. I restructured it into **four directory-scoped PRs with clear ownership** — one merged, the rest CI-green. Two hunks fed build-time codegen, so the reviewer gated on full CI; I used the CI-pinned linter to prove empirically why two sites had to be deferred (`RUF100` vs `# noqa` mutual constraint) |
 | ⚡ | **An agent loop that designs real analog circuits** (Summer 2026, Halo Microelectronics) | No numeric optimizer — LLM proposes experiment batches, a simulator holds authority over truth: **4 rounds, ~100× error reduction, 42 evaluations, 5 LLM calls, ~7 minutes**, beating the accuracy floor in the company's own codebase |
 | 🔬 | **CUDA kernel correctness fix in vLLM core** (~85k★) ([#45466](https://github.com/vllm-project/vllm/pull/45466)) | The issue thread blamed FlexAttention, CUDA graphs, and drivers — the real cause was an unchecked destination-pointer alignment in the KV-cache write path; fixed for every caller |
 | 📡 | **77 kHz BLE RSSI firmware** (Zephyr RTOS, nRF54L15) → **0.986 R²** recovering signals **5.3× below Nyquist** | 3× the highest published sampling rate, feeding a physics-informed network that recovers what classical sampling theory says is unrecoverable |
@@ -44,7 +46,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 <details>
 <summary><b>For recruiters · researchers · founders — 10-second version</b></summary>
 
-- **Recruiters:** 16 merged PRs across PyTorch / Anthropic / LangChain / vLLM / SGLang · shipped products · Dec 2026 grad seeking SWE/AI/ML roles.
+- **Recruiters:** 17 merged PRs across PyTorch / Anthropic / LangChain / vLLM / SGLang · shipped products · Dec 2026 grad seeking SWE/AI/ML roles.
 - **Researchers:** first-author on agent memory verification · contamination-free agent benchmarking · AAAI & IEEE-HKN member.
 - **Founders:** I build end to end and ship — agent systems with real verifiers, a live AI product, and a production LLM gateway serving my own downstream apps.
 
@@ -122,9 +124,13 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 ---
 
-### Open Source — 16 Merged Pull Requests
+### Open Source — 17 Merged Pull Requests
 
 #### [pytorch/pytorch](https://github.com/pytorch/pytorch) — the framework everything else is built on
+
+- **[PR #192151](https://github.com/pytorch/pytorch/pull/192151)** — landed on `main` as [`63bd3d6`](https://github.com/pytorch/pytorch/commit/63bd3d6): cleared **B007 lint violations across six directories** including `torchgen`, `tools`, and `functorch` (**23 files**). Because two hunks feed **build-time code generation**, the reviewer gated approval on full CI rather than the diff alone. I used the **CI-pinned linter** to empirically establish why two remaining sites had to be deferred — a mutual constraint between `RUF100` and `# noqa` suppression — converting a stated assumption into a reproducible result.
+  - **The organizational half:** enabling B007 repo-wide meant fixing **170 violations**. My original PR spanned **106 files across five teams**, auto-assigned **11 reviewers**, and stalled for four weeks with no clear owner. I restructured it into **four directory-scoped PRs with unambiguous ownership** — this one merged, the rest CI-green and under review. The technical fix was never the hard part; the review topology was.
+  - **Verification without a local build:** across all three PyTorch changes I validated behavior without compiling torch — **cross-interpreter differential testing (CPython 3.12 / 3.13 / 3.14)**, bytecode comparison, and standalone runtime-equivalence checks — and separated genuine regressions from **CI infrastructure noise** (broken trunk, flaky shards, credential failures) with evidence maintainers could reproduce.
 
 - **[PR #191866](https://github.com/pytorch/pytorch/pull/191866)** — landed on `main` as [`e9cfafa`](https://github.com/pytorch/pytorch/commit/e9cfafa), reviewed and approved by **@jansel (TorchInductor lead)**. *(PyTorch merges via `pytorchmergebot`, which closes the PR once the commit lands — the commit link is the canonical record.)* Converted three bare expressions in the compiler runtime that *looked* useless but carried side effects into explicit `_ = expr` bindings, and removed the genuinely dead statements in `torch/fx/experimental/unification`. The bare statements turned out to be a historical trick for suppressing F811 warnings; replaced with explicit `# noqa: F811` after establishing via minimal repro that **ruff exempts underscore-prefixed names from F811 — undocumented behavior** that explained why only the public names needed suppression. Unable to build torch locally, I proved runtime equivalence by importing the pre- and post-change packages side by side and diffing **18 dimensions**: per-function behavior, exception types and messages, and the full dispatch registry.
   - **Unblocking the merge:** landing was blocked by a ROCm/gfx950 CI failure. I diagnosed it as `hipErrorIllegalState` (HIP 401) thrown from `hipModuleLaunchKernel` and proved it independent of my change with **four reproducible lines of evidence** — bytecode comparison, config-gating analysis (the relevant flags appear **0 times** in the failure logs), the module never being imported, and elimination of cache bypass — and recommended the maintainer use `@pytorchbot merge -i`. The PR landed.
@@ -177,10 +183,10 @@ AI Agents · LLM Infrastructure · Deep Learning
 | --- | --- | --- |
 | [**RepoAgentBench**](https://github.com/HumphreySun98/repoagentbench) | Open-source CLI that mines merged GitHub PRs into reproducible, **contamination-free** coding-agent benchmarks — public benchmarks overestimate agent capability by 20–50% through training-data contamination. Surfaced what leaderboards can't: the same model produced *opposite* outcomes on an identical task under two different agent harnesses. | Python, PyPI, GitHub API |
 | [**SafetyCommander**](https://github.com/HumphreySun98/safety-commander-agent) *(Zapdos Labs × Antler hackathon)* | Factory-safety agent where a VLM judges risk **by reading the written safety policy and citing the controlling clause** — risk is decided in exactly one auditable module; edit one line of policy and the verdict flips. 📝 [Architecture write-up](https://dev.to/humphreysun98/safetycommander-an-ai-safety-officer-where-the-model-reasons-and-the-code-never-decides-4765) | Qwen3-VL, vLLM, YOLO, RAG |
-| [**Archiagents**](https://archiagents.com/) | Live AI product for architectural design (2-person team): briefs + CAD/IFC in → design schemes, photorealistic renders, IFC4 BIM models out. Competed in an OpenAI hackathon. | Vercel AI SDK, gpt-image-1, Autodesk APS |
+| [**Archiagents**](https://archiagents.com/) | Live AI product for architectural design (co-founder): briefs + CAD/IFC in → design schemes, photorealistic renders, IFC4 BIM models out. Competed in an OpenAI hackathon. | Vercel AI SDK, gpt-image-1, Autodesk APS |
 | [**LLM API Gateway**](https://api.manxuezhida.com) | Production multi-provider LLM proxy (Claude/GPT/Gemini) with load balancing and key management — powers my downstream products. | Node.js, Express, VPS |
 | [**SmartStudy Agent**](https://github.com/HumphreySun98/Smart-Study-Agent) *([Chrome Web Store](https://chromewebstore.google.com/detail/edbjkpfjonahanfkamlcbobmnplihmik))* | Closed-loop learning agent with a 4-policy benchmark — honestly reported that a rule-based heuristic (+35%) beat Q-learning (+18%) short-horizon, so the heuristic shipped. | Python, Claude API, Chrome MV3 |
-| [**NeuroUnfold**](https://github.com/HumphreySun98/physical-informed-Deep-Learning-for-wireless-sensing) | Physics-informed DL recovering Vector Signal from **5.3× aliased** Scalar Signal at **0.986 R²** — a signal classical sampling theory says is unrecoverable. | PyTorch, NumPy |
+| [**NeuroUnfold**](https://github.com/HumphreySun98/physical-informed-Deep-Learning-for-wireless-sensing) | Physics-informed DL recovering 406 kHz LoRa chirps from **5.3× aliased** BLE RSSI at **0.986 R²** — a signal classical sampling theory says is unrecoverable. | PyTorch, NumPy |
 | [**77 kHz BLE Firmware**](https://github.com/HumphreySun98/High-speed-BLE-RSSI-sampling-rate) | Custom Zephyr RTOS firmware on nRF54L15 — **3× the highest published sampling rate**, <0.01% drop. | C, Zephyr RTOS, DMA |
 | [**Dual-Stream Gesture Transformer**](https://github.com/HumphreySun98/dual-stream-gesture-transformer) | Real-time gesture recognition at **557 FPS** (1.79 ms), 88.2% accuracy from 35 labeled samples via sim-to-real. | PyTorch, MediaPipe |
 
@@ -190,7 +196,7 @@ AI Agents · LLM Infrastructure · Deep Learning
 
 - **First author** — *When Memory Updates but Behavior Does Not: Repairing Implicit Stale Dependencies in Personalized Agent Responses* · [arXiv:2608.01619](https://arxiv.org/abs/2608.01619) 
 - **Robotic manipulation RL** — sim-to-real on Franka & xArm, contact-rich policies in Isaac Lab
-- **Peer Reviewer** — AgentSkills Workshop @ ACM CAIS 2026 · *IEEE Wireless Communications Letters*
+- **Peer Reviewer** — NeurIPS 2026 Workshop on Verifiable Code Generation (VERICODEGEN) · AgentSkills Workshop @ ACM CAIS 2026 · *IEEE Wireless Communications Letters*
 - **Member** — AAAI · IEEE-HKN &nbsp;|&nbsp; 
 - 2 Chinese patents · Provincial 2nd Prize, China Undergraduate Mathematical Contest in Modeling
 
